@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,9 +19,6 @@
             text-align: center;
         }
         header {
-            background-image: url('https://static.toiimg.com/photo/63365869.cms');
-            background-size: cover;
-            background-position: center;
             height: 500px;
             display: flex;
             flex-direction: column;
@@ -29,6 +26,64 @@
             align-items: center;
             color: #fff;
             text-shadow: 1px 1px 2px #000;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Slideshow styles */
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+        }
+        .header-content h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        /* Slideshow navigation */
+        .slideshow-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        .slideshow-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slideshow-dot.active {
+            background: #fff;
+            transform: scale(1.2);
         }
         section {
             padding: 20px;
@@ -283,7 +338,19 @@
     </style>
 </head>
 <body>
-    <header></header>
+    <header>
+        <div class="slideshow">
+            <div class="slide active" style="background-image: url('https://static.toiimg.com/photo/63365869.cms');"></div>
+            <div class="slide" style="background-image: url('https://1.bp.blogspot.com/-SWOiLOtwGi4/VwPlkT7poFI/AAAAAAAADJY/c_807dZKDNgvvx4rJyxTCDow-ZfuhkjXQ/s1600/athirappily%2Bfalls%2Bkerala%2Bharstuff.jpg');"></div>
+            <div class="slide" style="background-image: url('https://www.worldwideescapes.co.uk/wp-content/uploads/2015/04/h_kumarakomlakeresort_01.jpg');"></div>
+        </div>
+        
+        <div class="slideshow-nav">
+            <div class="slideshow-dot active" data-slide="0"></div>
+            <div class="slideshow-dot" data-slide="1"></div>
+            <div class="slideshow-dot" data-slide="2"></div>
+        </div>
+    </header>
     <section id="city-highlight">
         <h2>Kerala, India</h2>
         <p><strong>Location:</strong> Southwest India<br>
@@ -365,7 +432,7 @@
             </div>
             <div class="carousel-item">
                 <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Flarge-desktop%2Fkozhikkodan-halwa-a-sweet-legacy-of-kerala-1732804570_8b5adc59fb33256ddf2a.webp&w=1920&q=75"
-                    alt="Kathakali Dance">
+                    alt="Kozhikkodan Halwa">
                 <h3>The Kozhikkodan Halwa</h3>
                 <p>A signature delicacy of Kerala, stands out for its unique preparation using coconut oil, a method
                     that distinguishes it from the ghee-based halwas found elsewhere in India. Its long shelf life
@@ -487,6 +554,44 @@
         <p>Let's make every trip a little lighter on the planet. 🌱</p>
     </footer>
     <script>
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slideshow-dot');
+        const slideCount = slides.length;
+        
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current slide and dot
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            // Update currentSlide
+            currentSlide = index;
+        }
+        
+        // Auto slideshow
+        function autoSlideshow() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            showSlide(currentSlide);
+        }
+        
+        // Initialize slideshow timer
+        let slideshowTimer = setInterval(autoSlideshow, 5000);
+        
+        // Add click events to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideshowTimer);  // Reset timer when manually changing slides
+                showSlide(index);
+                slideshowTimer = setInterval(autoSlideshow, 5000);  // Restart timer
+            });
+        });
+        
+        // Original functions
         function updateScore() {
             const checkboxes = document.querySelectorAll('#trackerForm input[type="checkbox"]');
             let total = 0;
@@ -510,6 +615,7 @@
             localStorage.setItem('ecoPoints', total);
             localStorage.setItem('ecoBadge', badge);
         }
+        
         window.onload = function () {
             const savedPoints = localStorage.getItem('ecoPoints');
             const savedBadge = localStorage.getItem('ecoBadge');
@@ -519,6 +625,7 @@
                 document.getElementById('progressBar').style.width = (savedPoints / 21) * 100 + "%";
             }
         };
+        
         function launchConfetti() {
             const duration = 2000;
             const end = Date.now() + duration;
@@ -543,6 +650,7 @@
                 }
             })();
         }
+        
         function submitReview(event) {
             event.preventDefault();
             const name = document.getElementById('name').value.trim();
