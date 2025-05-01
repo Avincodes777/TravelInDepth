@@ -1,0 +1,585 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sustainable Travel Guide - Jaipur</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f0;
+      color: #333;
+    }
+
+    header,
+    footer {
+      background-color: #a0522d;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      background-image: url('https://images.unsplash.com/photo-1650530777057-3a7dbc24bf6c?q=80&w=2001&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #a0522d;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2em;
+      background: linear-gradient(90deg, #d2691e, #ff7f50);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #a0522d;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .highlight {
+      background-color: #fff0e1;
+      padding: 10px;
+      border-left: 5px solid #a0522d;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    details {
+      margin-bottom: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #chatbox {
+      display: none;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      background: #fefefe;
+    }
+
+    .chat-question {
+      font-weight: bold;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .chat-answer {
+      display: none;
+      margin-bottom: 10px;
+    }
+
+    .fade-in {
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+    }
+
+    .carousel-item {
+      flex: none;
+      width: 250px;
+      background: #ffe4c4;
+      border-radius: 10px;
+      padding: 15px;
+      scroll-snap-align: start;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .carousel-item:hover {
+      transform: scale(1.05);
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* Progress bar styling */
+    .progress-container {
+      background-color: #ddd;
+      border-radius: 20px;
+      height: 20px;
+      width: 100%;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+    .slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  
+  
+}
+
+.mySlides {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 500px;
+ 
+}
+
+.mySlides img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+ 
+}
+
+.fade {
+  animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0.4}
+  to {opacity: 1}
+}
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #8fbc8f, #228b22);
+      width: 0%;
+      transition: width 0.5s ease-in-out;
+    }
+
+    /* Badge animation */
+    .badge-display {
+      animation: popIn 0.5s ease forwards;
+      transform: scale(0.95);
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="https://images.unsplash.com/photo-1650530777057-3a7dbc24bf6c?q=80&w=2001" style="width:100%">
+      </div>
+  
+      <div class="mySlides fade">
+        <img src="https://i.pinimg.com/originals/a2/c8/ee/a2c8ee44d321700e4393ad63310b0ccf.jpg" style="width:100%">
+      </div>
+  
+      <div class="mySlides fade">
+        <img src="https://hikerwolf.com/wp-content/uploads/2020/04/WhatsApp-Image-2020-04-04-at-9.22.20-PM.jpeg" style="width:100%">
+      </div>
+    </div>
+  </header>
+  
+
+  <section id="city-highlight">
+    <h2> Jaipur, India</h2>
+    <p><strong>Location:</strong> Rajasthan, India<br>
+      <strong>Population:</strong> ~3.8M<br>
+      <strong>Languages:</strong> Hindi, Rajasthani, English<br>
+      <strong>Time Zone:</strong> IST (UTC+5:30)
+    </p>
+    <div class="highlight">
+      Known as the "Pink City", Jaipur is a mix of royal heritage and vibrant street life — but it also faces
+      tourism-related environmental stress.
+    </div>
+    <p>Founded in 1727 by Maharaja Sawai Jai Singh II, Jaipur is famous for its pink-colored buildings, royal palaces,
+      and UNESCO World Heritage Sites like the Amer Fort and Jantar Mantar. It is part of the Golden Triangle tourist
+      circuit and is rich in arts, crafts, textiles, and traditional Rajasthani cuisine. As tourism grows, so does the
+      need for sustainable practices to preserve its historic charm and local livelihoods.</p>
+  </section>
+
+  <section>
+    <h2>Places to Visit </h2>
+    <div class="carousel">
+      <div class="carousel-item">
+        <img src="https://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/city/explore/107.jpg"
+          alt="Hawa Mahal">
+        <h3>Hawa Mahal</h3>
+        <p>Iconic "Palace of Winds" with 953 small windows designed for royal women to observe street festivals
+          unnoticed. A blend of history and breeze!</p>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/city/explore/125.jpg"
+          alt="Amer Fort">
+        <h3>Amer Fort</h3>
+        <p>Overlooking Maota Lake, this majestic fort is known for its artistic Hindu elements, elephant rides, and
+          sound & light shows.</p>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/city/explore/103.jpg"
+          alt="City Palace">
+        <h3>City Palace</h3>
+        <p>Historic royal residence now partially converted into a museum. It features grand courtyards, gardens, and
+          intricate architecture.</p>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/city/explore/106.jpg"
+          alt="Jantar Mantar">
+        <h3>Jantar Mantar</h3>
+        <p>World’s largest stone sundial and astronomical observatory built by Maharaja Jai Singh II. A scientific
+          marvel of its time!</p>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/city/explore/110.jpg"
+          alt="Albert Hall Museum">
+        <h3>Albert Hall Museum</h3>
+        <p>Oldest museum in Rajasthan with Indo-Saracenic architecture. Exhibits include ancient armor, paintings,
+          sculptures, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Major Attractions</h2>
+    <div class="carousel">
+      <div class="carousel-item">
+        <img src="https://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/city/explore/344.jpg"
+          alt="Hot Air Balloon Rides">
+        <h3>Hot Air Balloon Rides</h3>
+        <p>Soar above Jaipur’s forts and palaces during sunrise and enjoy breathtaking panoramic views of the city from
+          above.</p>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/city/explore/127.jpg"
+          alt="Handloom and Craft Items">
+        <h3>Handloom and Craft Items</h3>
+        <p>Discover traditional Rajasthani block printing, blue pottery, and handwoven textiles in local artisan shops
+          and markets.</p>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.tourism.rajasthan.gov.in/content/dam/rajasthan-tourism/english/city/explore/ERAP01.jpg"
+          alt="Elephant Ride">
+        <h3>Elephant Ride</h3>
+        <p>Popular around Amer Fort, elephant rides are a unique way to explore royal pathways, though ethical
+          alternatives are encouraged.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chatbot">
+    <h2> 🤖 Culture Chatbot </h2>
+    <button class="button" onclick="toggleChatbot()">💬 Open Chatbot</button>
+    <div id="chatbox">
+      <div class="chat-question" onclick="toggleAnswer(this)">1. How do I greet locals in Jaipur?</div>
+      <div class="chat-answer">Say "Namaste" with folded hands. It's respectful and widely accepted.</div>
+      <div class="chat-question" onclick="toggleAnswer(this)">2. What should I wear when visiting temples?</div>
+      <div class="chat-answer">Wear modest clothing that covers shoulders and knees. Remove shoes before entering.</div>
+      <div class="chat-question" onclick="toggleAnswer(this)">3. Can I take photos everywhere?</div>
+      <div class="chat-answer">Avoid photography in temples and always ask permission before clicking photos of people.
+      </div>
+      <div class="chat-question" onclick="toggleAnswer(this)">4. Is tipping expected in Jaipur?</div>
+      <div class="chat-answer">Yes, it's polite to tip 5-10% in restaurants and small amounts to guides or hotel staff.
+      </div>
+      <div class="chat-question" onclick="toggleAnswer(this)">5. Are Elephant rides ethical?</div>
+      <div class="chat-answer">Many are not. Consider visiting animal sanctuaries instead like Elefantastic.
+      </div>
+      <div class="chat-question" onclick="toggleAnswer(this)">6. How do I deal with language barriers?</div>
+      <div class="chat-answer">Learn a few basic Hindi phrases or use our real time translation tool. Many people
+        understand simple English.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2> Eco-Friendly Travel Recommendations</h2>
+    <details class="fade-in">
+      <summary>🚲 Transport</summary>
+      <p>Use e-rickshaws, electric buses, and rent bicycles to explore the city with a smaller carbon footprint.</p>
+    </details>
+    <details class="fade-in">
+      <summary>🏨 Stay</summary>
+      <p>Choose eco-conscious hotels like Dera Rawatsar that use renewable energy and support local employment.</p>
+    </details>
+    <details class="fade-in">
+      <summary>🛍 Shop</summary>
+      <p>Support artisans by shopping in local eco-markets such as Jaipur Blue Pottery and handcrafted textiles.</p>
+    </details>
+    <details class="fade-in">
+      <summary>🐘 Activities</summary>
+      <p>Avoid elephant rides and instead take guided heritage walks or community-led storytelling tours.</p>
+    </details>
+    <details class="fade-in">
+      <summary>💧 Water</summary>
+      <p>Carry a reusable water bottle and refill it from trusted water points to reduce plastic waste.</p>
+    </details>
+    <details class="fade-in">
+      <summary>♻ Waste</summary>
+      <p>Dispose waste responsibly, avoid single-use plastics, and use cloth bags when shopping.</p>
+    </details>
+    <details class="fade-in">
+      <summary>🌳 Nature Etiquette</summary>
+      <p>Stick to marked trails when exploring nature spots and avoid picking flowers or disturbing wildlife habitats.
+      </p>
+    </details>
+    <details class="fade-in">
+      <summary>🍽 Dining</summary>
+      <p>Opt for local vegetarian meals which have a lower carbon footprint and support traditional food businesses.</p>
+    </details>
+    <details class="fade-in">
+      <summary>🔌 Energy</summary>
+      <p>Switch off electrical devices when not in use and choose accommodations with solar or green energy options.</p>
+    </details>
+  </section>
+
+
+  <section id="carbon-tracker" class="fade-in">
+    <h2>🌿 Your Eco Impact Tracker</h2>
+    <h4>
+      <p><b>Tick off the actions you've taken:</b></p>
+    </h4>
+    <form id="trackerForm" oninput="updateScore()">
+      <b><label><input type="checkbox" value="5"> Used public transport or bicycle</label><br></b>
+      <b><label><input type="checkbox" value="4"> Stayed in eco-hotel</label><br></b>
+      <b><label><input type="checkbox" value="3"> Carried reusable water bottle</label><br></b>
+      <b><label><input type="checkbox" value="2"> Ate vegetarian meals</label><br></b>
+      <b><label><input type="checkbox" value="3"> Avoided plastic items</label><br></b>
+      <b><label><input type="checkbox" value="4"> Supported local artisans</label><br></b>
+    </form>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="highlight badge-display" id="badgeBox">
+      <p><strong>Total Points:</strong> <span id="score">0</span></p>
+      <p><strong>Your Badge:</strong> <span id="badge">None yet</span></p>
+    </div>
+  </section>
+
+  <section id="user-reviews">
+    <h2>Share Your Experience</h2>
+    <form id="reviewForm" onsubmit="submitReview(event)">
+      <input type="text" id="name" placeholder="Your name, Place" required
+        style="padding: 10px; width: 40%; border-radius: 5px; border: 1px solid #ccc;">
+      <br><br>
+      <textarea id="review" rows="4" placeholder="Write your review here..." required
+        style="padding: 10px; width: 80%; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+      <br><br>
+      <button type="submit" class="button">Submit Review</button>
+    </form>
+    <div id="reviewList" style="margin-top: 20px;"></div>
+  </section>
+
+  <section>
+    <h2>What Travelers Say</h2>
+    <div class="highlight">
+      <p>“I skipped the elephant ride and joined a community-led walking tour. I saw Jaipur through local eyes —
+        unforgettable.”<br><strong>– Aanya, Delhi</strong></p>
+    </div>
+    <div class="highlight">
+      <p>“Staying in a solar-powered haveli made me feel part of something bigger. It wasn’t just travel, it was
+        impact.”<br><strong>– Mark, London</strong></p>
+    </div>
+    <div class="highlight">
+      <p>“The handmade textiles at Sanganer were beautiful and sustainable. Supporting local artisans felt like a
+        meaningful souvenir.”<br><strong>– Laura, Berlin</strong></p>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Ready to travel better?</h3>
+    <a href="#city-highlight" class="button">Explore Another City</a>
+    <p>Let’s make every trip a little lighter on the planet. 🌱</p>
+  </footer>
+
+  <script>
+    function updateScore() {
+      const checkboxes = document.querySelectorAll('#trackerForm input[type="checkbox"]');
+      let total = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) total += parseInt(cb.value);
+      });
+
+      document.getElementById('score').textContent = total;
+
+      // Update progress bar
+      const maxPoints = 21;
+      const percent = (total / maxPoints) * 100;
+      document.getElementById('progressBar').style.width = percent + "%";
+
+      let badge = "None yet";
+      if (total >= 15) {
+        badge = "🌍 Green Guardian";
+        launchConfetti();
+      } else if (total >= 8) {
+        badge = "🌿 Sustainability Star";
+      } else if (total > 0) {
+        badge = "🌱 Eco Explorer";
+      }
+
+      document.getElementById('badge').textContent = badge;
+      localStorage.setItem('ecoPoints', total);
+      localStorage.setItem('ecoBadge', badge);
+    }
+
+    // Load previous state on page load
+    window.onload = function () {
+      const savedPoints = localStorage.getItem('ecoPoints');
+      const savedBadge = localStorage.getItem('ecoBadge');
+      if (savedPoints && savedBadge) {
+        document.getElementById('score').textContent = savedPoints;
+        document.getElementById('badge').textContent = savedBadge;
+        document.getElementById('progressBar').style.width = (savedPoints / 21) * 100 + "%";
+      }
+    };
+    
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  const slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 4000); // Change image every 4 seconds
+}
+
+
+    // 🎉 Confetti animation using canvas
+    function launchConfetti() {
+      const duration = 2000;
+      const end = Date.now() + duration;
+
+      const colors = ['#a0522d', '#d2691e', '#32cd32', '#ffd700'];
+
+      (function frame() {
+        confetti({
+          particleCount: 3,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: colors
+        });
+        confetti({
+          particleCount: 3,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: colors
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    }
+
+
+    function submitReview(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const review = document.getElementById('review').value.trim();
+
+      if (!name || !review) return;
+
+      const reviewList = document.getElementById('reviewList');
+      const newReview = document.createElement('div');
+      newReview.className = 'highlight';
+      newReview.innerHTML = `<p>"${review}"<br><strong>– ${name}</strong></p>`;
+      reviewList.prepend(newReview);
+
+      // Clear the form
+      document.getElementById('reviewForm').reset();
+    }
+
+    function toggleChatbot() {
+      const box = document.getElementById('chatbox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleAnswer(element) {
+      const answer = element.nextElementSibling;
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+</body>
+
+</html>

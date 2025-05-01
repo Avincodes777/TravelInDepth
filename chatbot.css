@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("mountains.jpg");
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #2196f3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
+  
+  .chat-icon::before {
+    content: '\1F4AC';
+    font-size: 24px;
+    color: white;
+  }
+  
+  .chat-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    z-index: 998;
+  }
+  
+  .chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    background-image: url("/mnt/data/mountain.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    white-space: pre-wrap;
+    backdrop-filter: blur(6px);
+  }
+  
+  .message.bot {
+    background: rgba(225, 245, 254, 0.9);
+    align-self: flex-start;
+  }
+  
+  .message.user {
+    background: rgba(200, 230, 201, 0.9);
+    align-self: flex-end;
+    text-align: right;
+    margin-left: auto;
+  }
+  
+  .input-area {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+  
+  .input-area input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+  
+  .input-area button {
+    padding: 10px 20px;
+    background: #2196f3;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  

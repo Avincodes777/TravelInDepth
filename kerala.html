@@ -1,0 +1,569 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Travel Guide - Kerala</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff8f0;
+            color: #333;
+        }
+        header,
+        footer {
+            background-color: #046a38;
+            color: white;
+            text-align: center;
+        }
+        header {
+            background-image: url('https://static.toiimg.com/photo/63365869.cms');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+        section {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(4, 106, 56, 0.1);
+        }
+        h1,
+        h2,
+        h3 {
+            color: #046a38;
+            font-family: 'Georgia', serif;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            background: linear-gradient(90deg, #046a38, #0d9259);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+        }
+        h3 {
+            border-bottom: 2px dotted #046a38;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        .button {
+            display: inline-block;
+            background-color: #046a38;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #0d9259;
+            transform: translateY(-2px);
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-left: 5px solid #046a38;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-style: italic;
+            box-shadow: 0 2px 5px rgba(4, 106, 56, 0.1);
+        }
+        details summary {
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #046a38;
+            padding: 8px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        details summary:hover {
+            background-color: #c8e6c9;
+        }
+        details {
+            margin-bottom: 15px;
+            transition: all 0.3s ease-in-out;
+            border-bottom: 1px dashed #c8e6c9;
+            padding-bottom: 10px;
+        }
+        #chatbox {
+            display: none;
+            margin-top: 15px;
+            border: 1px solid #046a38;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fefefe;
+            box-shadow: 0 3px 10px rgba(4, 106, 56, 0.1);
+        }
+        .chat-question {
+            font-weight: bold;
+            margin: 12px 0;
+            cursor: pointer;
+            color: #046a38;
+            background-color: #e8f5e9;
+            padding: 8px 12px;
+            border-radius: 15px;
+            transition: all 0.2s ease;
+        }
+        .chat-question:hover {
+            background-color: #c8e6c9;
+        }
+        .chat-answer {
+            display: none;
+            margin: 0 0 15px 20px;
+            padding: 10px;
+            background-color: #f1f8e9;
+            border-radius: 0 15px 15px 15px;
+            border-left: 3px solid #046a38;
+        }
+        .fade-in {
+            animation: fadeInUp 1s ease forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+            padding: 10px 0;
+            scrollbar-width: thin;
+            scrollbar-color: #046a38 #c8e6c9;
+        }
+        .carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+        .carousel::-webkit-scrollbar-track {
+            background: #c8e6c9;
+            border-radius: 10px;
+        }
+        .carousel::-webkit-scrollbar-thumb {
+            background: #046a38;
+            border-radius: 10px;
+        }
+        .carousel-item {
+            flex: none;
+            width: 250px;
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 18px;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 8px rgba(4, 106, 56, 0.15);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            border: 1px solid #c8e6c9;
+        }
+        .carousel-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(4, 106, 56, 0.2);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 2px solid #fff;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        .progress-container {
+            background-color: #c8e6c9;
+            border-radius: 20px;
+            height: 20px;
+            width: 100%;
+            margin-top: 20px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #046a38, #0d9259);
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+        }
+        .badge-display {
+            animation: popIn 0.5s ease forwards;
+            transform: scale(0.95);
+            border: 2px dashed #046a38;
+            background-color: #fff8f0;
+        }
+        @keyframes popIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        #reviewForm input,
+        #reviewForm textarea {
+            border: 1px solid #046a38;
+            background-color: #fff8f0;
+            transition: all 0.3s ease;
+        }
+        #reviewForm input:focus,
+        #reviewForm textarea:focus {
+            outline: none;
+            border-color: #046a38;
+            box-shadow: 0 0 5px rgba(4, 106, 56, 0.3);
+        }
+        footer {
+            background-image: linear-gradient(to right, #03502a, #046a38, #03502a);
+            padding: 30px 0;
+            margin-top: 30px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        ul li:before {
+            content: "🌴";
+            margin-right: 8px;
+        }
+        a {
+            color: #046a38;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #0d9259;
+            text-decoration: underline;
+        }
+        .testimonial-quote {
+            position: relative;
+            font-style: italic;
+        }
+        .testimonial-quote:before {
+            content: "";
+            font-size: 60px;
+            color: #046a3830;
+            position: absolute;
+            left: -20px;
+            top: -20px;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <section id="city-highlight">
+        <h2>Kerala, India</h2>
+        <p><strong>Location:</strong> Southwest India<br>
+            <strong>Population:</strong> ~35M (State-wide)<br>
+            <strong>Languages:</strong> Malayalam, English<br>
+            <strong>Time Zone:</strong> IST (UTC+5:30)
+        </p>
+        <div class="highlight">
+            Kerala is known as "God's Own Country" with its serene backwaters, pristine beaches, lush hill stations, and
+            rich cultural heritage — sustainable tourism is vital to preserve its delicate ecosystems.
+        </div>
+        <p>Kerala, nestled along the southwestern Malabar Coast of India, is a paradise of natural beauty and cultural
+            richness. Known for its emerald backwaters, palm-fringed beaches, misty hill stations, and vibrant
+            traditions, Kerala offers a perfect blend of relaxation and adventure. Whether you're cruising through the
+            tranquil backwaters of Alleppey, exploring spice plantations in Thekkady, or experiencing traditional
+            Kathakali performances, every moment in Kerala is infused with magic and serenity.</p>
+    </section>
+    <section>
+        <h2>Places to Visit</h2>
+        <div class="carousel">
+            <div class="carousel-item">
+                <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Ftablet%2Fboating-in-kerala-1727357836_a09a8d94ed9c1408a487.webp&w=1920&q=75"
+                    alt="Alleppey Backwaters">
+                <h3>Alleppey Backwaters</h3>
+                <p>Experience the tranquil network of lagoons, lakes, and canals by traditional houseboat. Alleppey,
+                    known as the "Venice of the East," offers one of Kerala's most serene experiences with its
+                    palm-fringed waterways and village life.</p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Ftablet%2Fmunnar-blooms-blue-1743492906_7c09c3cad2add1e5fa89.webp&w=1920&q=75"
+                    alt="Munnar">
+                <h3>Munnar</h3>
+                <p>This picturesque hill station is famous for its vast tea plantations, misty mountains, and diverse
+                    flora and fauna. A haven for nature lovers and adventure seekers, Munnar's rolling hills offer
+                    stunning vistas and trekking opportunities.</p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.pexels.com/photos/326149/pexels-photo-326149.jpeg" alt="Fort Kochi">
+                <h3>Fort Kochi</h3>
+                <p>A historic coastal area with Portuguese, Dutch, and British colonial influences. Known for its iconic
+                    Chinese fishing nets, ancient churches, and vibrant art scene, Fort Kochi offers a fascinating
+                    glimpse into Kerala's multicultural past.</p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.keralatourism.org/images/microsites/wayanad/wayanad-beckons.jpg" alt="Wayanad">
+                <h3>Wayanad</h3>
+                <p>A rural district known for its spice plantations, wildlife sanctuaries, and prehistoric caves. The
+                    lush forests of Wayanad are home to diverse wildlife, tribal communities, and ancient rock carvings
+                    dating back to 6000 BCE.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>Major Attractions</h2>
+        <div class="carousel">
+            <div class="carousel-item">
+                <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Flarge-desktop%2Ffestivals-1727260694_2a38bbf4c3cabc8a3e9c.webp&w=1920&q=75"
+                    alt="Onam Festival">
+                <h3>Onam Festival</h3>
+                <p>Kerala's most important festival celebrates the mythical King Mahabali's annual homecoming with
+                    floral arrangements (pookalam), boat races, traditional dances, and elaborate feasts (Onam Sadhya).
+                </p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Flarge-desktop%2Fayurveda-treatment-images-1727260501_1c58b64d59613be9c7d5.webp&w=1920&q=75"
+                    alt="Ayurveda">
+                <h3>Ayurveda Treatments</h3>
+                <p>Kerala is renowned for authentic Ayurvedic healing traditions. The state's climate and abundance of
+                    medicinal plants make it ideal for traditional wellness therapies that have been practiced for
+                    thousands of years.</p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Flarge-desktop%2Fperforming-arts-1727262069_2e5fe2ad841acec256c4.webp&w=1920&q=75"
+                    alt="Kathakali Dance">
+                <h3>Kathakali Performance</h3>
+                <p>This classical dance-drama features elaborate costumes, vivid makeup, and detailed gestures telling
+                    stories from Indian epics. The performances combine dance, music, and acting in a unique cultural
+                    experience.</p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Flarge-desktop%2Fkozhikkodan-halwa-a-sweet-legacy-of-kerala-1732804570_8b5adc59fb33256ddf2a.webp&w=1920&q=75"
+                    alt="Kathakali Dance">
+                <h3>The Kozhikkodan Halwa</h3>
+                <p>A signature delicacy of Kerala, stands out for its unique preparation using coconut oil, a method
+                    that distinguishes it from the ghee-based halwas found elsewhere in India. Its long shelf life
+                    without refrigeration has made it a popular treat across generations.</p>
+            </div>
+        </div>
+    </section>
+    <section id="chatbot">
+        <h2>🤖 Culture Chatbot</h2>
+        <button class="button" onclick="toggleChatbot()">💬 Open Chatbot</button>
+        <div id="chatbox">
+            <div class="chat-question" onclick="toggleAnswer(this)">1. How do I greet locals in Kerala?</div>
+            <div class="chat-answer">Say "Namaskaram" with folded hands. Adding "Sughamano?" (Are you well?) is
+                appreciated.</div>
+            <div class="chat-question" onclick="toggleAnswer(this)">2. What local dishes should I definitely try?</div>
+            <div class="chat-answer">Must-try dishes include Kerala Sadhya (feast on banana leaf), Appam with Stew,
+                Karimeen Pollichathu (pearl spot fish), and Puttu with Kadala Curry.</div>
+            <div class="chat-question" onclick="toggleAnswer(this)">3. What are respectful ways to explore Kerala's
+                culture?</div>
+            <div class="chat-answer">Dress modestly at temples, remove shoes before entering homes/temples, and use your
+                right hand for giving/receiving items.</div>
+            <div class="chat-question" onclick="toggleAnswer(this)">4. What are the Eco-Friendly activities in Kerala?
+            </div>
+            <div class="chat-answer">Try bamboo rafting in Periyar, organic farm visits in Wayanad, bird watching in
+                Kumarakom, and cycling tours through villages.</div>
+            <div class="chat-question" onclick="toggleAnswer(this)">5. Is Kerala food spicy?</div>
+            <div class="chat-answer">Kerala cuisine uses many spices but isn't overwhelmingly hot. It's aromatic with
+                coconut, curry leaves, and black pepper rather than chili-hot.</div>
+        </div>
+    </section>
+    <section>
+        <h2>Eco-Friendly Travel Recommendations</h2>
+        <details class="fade-in">
+            <summary>🚲 Transport</summary>
+            <p>Use water taxis in backwater regions, rent bicycles in Fort Kochi, or join walking tours in Munnar's tea
+                plantations.</p>
+        </details>
+        <details class="fade-in">
+            <summary>🏨 Stay</summary>
+            <p>Choose eco-friendly houseboats in Alleppey that use solar power, or homestays in Wayanad that practice
+                rainwater harvesting and organic farming.</p>
+        </details>
+        <details class="fade-in">
+            <summary>🛒 Shop</summary>
+            <p>Buy handloom textiles like Kerala Kasavu sarees, coconut shell crafts, and spices directly from local
+                artisans and farmers.</p>
+        </details>
+        <details class="fade-in">
+            <summary>🍽 Dining</summary>
+            <p>Try traditional vegetarian Kerala Sadhya served on banana leaves at family-run restaurants using local,
+                seasonal ingredients.</p>
+        </details>
+        <details class="fade-in">
+            <summary>💧 Water</summary>
+            <p>Carry a reusable water bottle and refill it from trusted water points to reduce plastic waste.</p>
+        </details>
+        <details class="fade-in">
+            <summary>🌳 Nature Etiquette</summary>
+            <p>Follow designated paths in wildlife sanctuaries like Periyar and Silent Valley, and avoid plastic waste
+                in sensitive backwater ecosystems.</p>
+        </details>
+        <details class="fade-in">
+            <summary>🔌 Energy</summary>
+            <p>Choose accommodations with natural cooling instead of air conditioning where possible, and support
+                properties using renewable energy sources.</p>
+        </details>
+    </section>
+    <section id="carbon-tracker" class="fade-in">
+        <h2>🌿 Your Eco Impact Tracker</h2>
+        <h4>
+            <p><b>Tick off the actions you've taken:</b></p>
+        </h4>
+        <form id="trackerForm" oninput="updateScore()">
+            <label><input type="checkbox" value="5"> Took public transport or water taxi</label><br>
+            <label><input type="checkbox" value="4"> Stayed at eco-lodge or homestay</label><br>
+            <label><input type="checkbox" value="3"> Used reusable bottle or container</label><br>
+            <label><input type="checkbox" value="2"> Tried plant-based meals</label><br>
+            <label><input type="checkbox" value="3"> Avoided plastic packaging</label><br>
+            <label><input type="checkbox" value="4"> Supported local artisans</label><br>
+        </form>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="highlight badge-display" id="badgeBox">
+            <p><strong>Total Points:</strong> <span id="score">0</span></p>
+            <p><strong>Your Badge:</strong> <span id="badge">None yet</span></p>
+        </div>
+    </section>
+    <section id="user-reviews">
+        <h2>Share Your Experience</h2>
+        <form id="reviewForm" onsubmit="submitReview(event)">
+            <input type="text" id="name" placeholder="Your name, Place" required
+                style="padding: 10px; width: 40%; border-radius: 5px; border: 1px solid #ccc;">
+            <br><br>
+            <textarea id="review" rows="4" placeholder="Write your review here..." required
+                style="padding: 10px; width: 80%; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+            <br><br>
+            <button type="submit" class="button">Submit Review</button>
+        </form>
+        <div id="reviewList" style="margin-top: 20px;"></div>
+    </section>
+    <section>
+        <h2>What Travelers Say</h2>
+        <div class="highlight">
+            <p>"Kerala's backwaters are magical! Gliding through peaceful canals on a houseboat while watching village
+                life unfold was truly unforgettable."<br><strong>– Priya S. (Bangalore)</strong></p>
+        </div>
+        <div class="highlight">
+            <p>"The tea plantations of Munnar took my breath away. The combination of misty mountains and endless green
+                was therapeutic for the soul."<br><strong>– Michael T. (USA)</strong></p>
+        </div>
+        <div class="highlight">
+            <p>"The Ayurvedic treatments transformed my wellness journey. Two weeks in Kerala left me more rejuvenated
+                than years of conventional therapies."<br><strong>–Sophia K. (Germany)</strong></p>
+        </div>
+    </section>
+    <footer>
+        <a href="#city-highlight" class="button">Explore Another City</a>
+        <p>Let's make every trip a little lighter on the planet. 🌱</p>
+    </footer>
+    <script>
+        function updateScore() {
+            const checkboxes = document.querySelectorAll('#trackerForm input[type="checkbox"]');
+            let total = 0;
+            checkboxes.forEach(cb => {
+                if (cb.checked) total += parseInt(cb.value);
+            });
+            document.getElementById('score').textContent = total;
+            const maxPoints = 21;
+            const percent = (total / maxPoints) * 100;
+            document.getElementById('progressBar').style.width = percent + "%";
+            let badge = "None yet";
+            if (total >= 15) {
+                badge = "🌍 Green Guardian";
+                launchConfetti();
+            } else if (total >= 8) {
+                badge = "🌿 Sustainability Star";
+            } else if (total > 0) {
+                badge = "🌱 Eco Explorer";
+            }
+            document.getElementById('badge').textContent = badge;
+            localStorage.setItem('ecoPoints', total);
+            localStorage.setItem('ecoBadge', badge);
+        }
+        window.onload = function () {
+            const savedPoints = localStorage.getItem('ecoPoints');
+            const savedBadge = localStorage.getItem('ecoBadge');
+            if (savedPoints && savedBadge) {
+                document.getElementById('score').textContent = savedPoints;
+                document.getElementById('badge').textContent = savedBadge;
+                document.getElementById('progressBar').style.width = (savedPoints / 21) * 100 + "%";
+            }
+        };
+        function launchConfetti() {
+            const duration = 2000;
+            const end = Date.now() + duration;
+            const colors = ['#006400', '#228b22', '#32cd32', '#ffd700'];
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        }
+        function submitReview(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const review = document.getElementById('review').value.trim();
+            if (!name || !review) return;
+            const reviewList = document.getElementById('reviewList');
+            const newReview = document.createElement('div');
+            newReview.className = 'highlight';
+            newReview.innerHTML = `<p>"${review}"<br><strong>– ${name}</strong></p>`;
+            reviewList.prepend(newReview);   
+            document.getElementById('reviewForm').reset();
+        }
+        function toggleChatbot() {
+            const box = document.getElementById('chatbox');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</body>
+</html>
